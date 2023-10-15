@@ -9,9 +9,11 @@
    </div>
    </nav>
   <router-view/>
-  <div class=""></div>
+  <!-- <profile @fat="lift" class="" style="visibility: hidden;"></profile>
+  <dashboard header=item ></dashboard> -->
+  <SlidersTwoTone />
   
-<aside  class="opacity-70 fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0">
+<aside class="opacity-70 fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0">
    <div class="h-full py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
       <ul class="space-y-2 font-medium">
         <router-link to="/">
@@ -37,8 +39,24 @@
       </ul>
    </div>
 </aside>
-
 </template>
+
+<script>
+  import dashboard from '../src/views/Dashboard.vue'
+  import profile from '../src/views/Profile.vue'
+
+  export default{
+    components: {dashboard,profile},
+    methods:{
+      lift(){
+        items[items.length-1]
+      }
+    } 
+  }
+
+
+</script>
+
 
 <style>
 a{

@@ -54,18 +54,17 @@
         this.weather = results;
       },
       dateBuilder () {
-        let d = new Date();
-        let months = ["January", "February", "March", "April", "May", "June", "July",
-          "August", "September", "October", "November", "December"];
-          let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
-          "Saturday" ];
+        let d = new Date(new Date().toLocaleString('en', {timeZone: 'Asia/Tehran'}));
+        let options = {   year: 'numeric',day: 'numeric', month: 'long',};
+        let today = new Date().toLocaleDateString('fa-IR', options);
+
+          let days = ["یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه", 
+          "شنبه" ];
 
           let day = days[d.getDay()];
-          let date = d.getDate();
-          let month = months[d.getMonth()];
-          let year = d.getFullYear();
+          let year = [today];
 
-          return `${day} ${date} ${month} ${year}`
+          return `${day} ${year}`
       }
     }
   }

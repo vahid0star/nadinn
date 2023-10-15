@@ -1,17 +1,25 @@
 <template>  
 <div>{{todayDate}}</div>
+<h2>{{ header }}</h2>
 <h2>{{ greet }}</h2>
+<SlidersTwoTone />
 <div v-text="message">
 </div>
+<name ></name>
+<div id="name"></div>
 </template>
 <script>  
+import name from "../views/Profile.vue";
 import moment from 'moment'  
 export default {    
-    name: 'myComponent', 
+    name: 'myComponent',
+    props: ['header'],
+    components: {name},
     data () {  
         return {        
             todayDate: moment().format('H:MM'),
-            message: greet
+            message: greet,
+
 
         }
     }  
@@ -28,5 +36,6 @@ else if (hrs >= 17 && hrs <= 24)
   greet = 'Good Evening';
 </script>
 <style>
+
 
 </style>

@@ -4,7 +4,7 @@
   <form @submit.prevent="addItem" class=" flex flex-row justify-content-center mt-5">
     <input v-model="newItem" type="text" placeholder="name" 
     class="w-100 form-control">
-    <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-2xl px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SAVE</button>
+    <button @click="select" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-2xl px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SAVE</button>
     
   </form>
   <!-- <ul>
@@ -16,7 +16,7 @@
                 </button>
           </li>
       </ul> -->
-      <div >Hi {{ items[items.length-1] }}</div>
+      <div id="name" >Hi {{ items[items.length-1] }}</div>
   <select class=" my-10 text-4lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
   <option  @click="updateCount">them</option>
   <option id="opt1">Daily</option>
@@ -32,11 +32,13 @@
   <option id="opt4">yazd</option>
 </select>
 </div>
+<dashboard header="Sign a for a give"/>
 </template>
 <script>
+  import dashboard from '../views/Dashboard.vue'
   import { defineComponent } from 'vue';
   import {ref} from 'vue'
-  import { Button, message } from 'ant-design-vue';
+  import { App, Button, message } from 'ant-design-vue';
     const ButtonGroup = Button.Group;
     const pervCount = JSON.parse(localStorage.count || 0)
     const count = ref(pervCount)
@@ -48,7 +50,10 @@
 
 export default defineComponent({
   props: {username:String,},
+  
     components: {
+      name:'App',
+      dashboard,
     AButton: Button,
     AButtonGroup: ButtonGroup,
     
@@ -71,7 +76,11 @@ export default defineComponent({
             // Load items from localStorage on component mount
             this.items = JSON.parse(localStorage.getItem('items')) || [];
         },
+        
         methods: {
+            select(){
+              this.$emit('fat')
+            },
             addItem() {
                 this.items.push(this.newItem);
                 this.newItem = '';
