@@ -52,6 +52,16 @@
       <a-button class=" bg-slate-700" type="primary" style="background-color: rgb(21, 155, 250);" @click="submitTask">Submit</a-button>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col" class=" text-center" v-for="x in items" :key="x.text">{{ x.text }}</th>
+    </tr>
+  </thead>
+  <tbody>
+>>>>>>> a1ef2a5cf9d11325fa72dcfe9acc014254ccc4f5
 
 
   <Todo :Task="Task" :Status= "Status" :Edit="Edit" :Delete= "Delete" />
@@ -67,6 +77,11 @@ import { Button } from 'ant-design-vue';
         AButton: Button,
         AButtonGroup: ButtonGroup,
       },
+<<<<<<< HEAD
+=======
+      props: ['Task'],
+      name: "Todo",
+>>>>>>> a1ef2a5cf9d11325fa72dcfe9acc014254ccc4f5
       
       data() {
         return{

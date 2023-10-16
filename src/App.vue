@@ -45,6 +45,7 @@
 
 <script>
   import dashboard from '../src/views/Dashboard.vue'
+<<<<<<< HEAD
   import name from "../src/views/Profile.vue";
   export default{
     name: 'myComponent',
@@ -56,6 +57,12 @@ data () {
             message: ''
         } 
     },
+=======
+  import profile from '../src/views/Profile.vue'
+
+  export default{
+    components: {dashboard,profile},
+>>>>>>> a1ef2a5cf9d11325fa72dcfe9acc014254ccc4f5
     methods:{
       lift(){
         items[items.length-1]
