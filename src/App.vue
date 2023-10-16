@@ -9,9 +9,11 @@
    </div>
    </nav>
   <router-view/>
-  <div class=""></div>
+  <!-- <profile @fat="lift" class="" style="visibility: hidden;"></profile>
+  <dashboard header=item ></dashboard> -->
+  <SlidersTwoTone />
   
-<aside  class="opacity-70 fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0">
+<aside class="opacity-70 fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0">
    <div class="h-full py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
       <ul class="space-y-2 font-medium">
         <router-link to="/">
@@ -35,10 +37,35 @@
             </a>
         </router-link>
       </ul>
-   </div>
+      
+    </div>
+    <app-input :msg="message" @messageChange="message = $event"></app-input>
 </aside>
-
 </template>
+
+<script>
+  import dashboard from '../src/views/Dashboard.vue'
+  import name from "../src/views/Profile.vue";
+  export default{
+    name: 'myComponent',
+    props: ['samm'],
+    components: {dashboard,'app-input': name,
+},
+data () {  
+        return {        
+            message: ''
+        } 
+    },
+    methods:{
+      lift(){
+        items[items.length-1]
+      }
+    } 
+  }
+
+
+</script>
+
 
 <style>
 a{
