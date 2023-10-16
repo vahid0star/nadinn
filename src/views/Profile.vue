@@ -7,6 +7,7 @@
     <button @click="select" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-2xl px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SAVE</button>
     
   </form>
+  <input type="text" :value="msg" @input="changeMessage">
   <!-- <ul>
           <li class="px-5" v-for="(item, index) in items" 
               :key="index">
@@ -78,6 +79,10 @@ export default defineComponent({
         },
         
         methods: {
+          changeMessage(event){
+            this.message = event.target.value;
+            this.$emit('messageChanged', this.message);
+          },
             select(){
               this.$emit('fat')
             },
