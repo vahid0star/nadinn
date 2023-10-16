@@ -5,7 +5,6 @@
 <SlidersTwoTone />
 <div >{{message}}</div>
 <h1>{{ $store.state.count }}</h1>
-    <h1>{{ $store.state.items}}</h1>
 <app-input :msg="message" @messageChange="message = $event"></app-input>
 
 <vue-flux
