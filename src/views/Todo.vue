@@ -10,10 +10,7 @@
   <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col" class=" text-center">Task</th>
-      <th scope="col" class=" text-center">Status</th>
-      <th scope="col" class=" text-center">Edit</th>
-      <th scope="col" class=" text-center">Delete</th>
+      <th scope="col" class=" text-center" v-for="x in items" :key="x.text">{{ x.text }}</th>
     </tr>
   </thead>
   <tbody>
@@ -63,24 +60,30 @@ import { Button } from 'ant-design-vue';
         AButton: Button,
         AButtonGroup: ButtonGroup,
       },
+      props: ['Task'],
       name: "Todo",
-      props: {
-        msg: String,
-      },
-
-    data() {
-      return{
-        task: "",
-        editedTask: null,
-        statuses: ["to-do", "in-progress", "finished"],
+      
+      data() {
+        return{
+          items: [
+              { text: 'Task',  },
+              { text: 'Status', },
+              { text: 'Edit',  },
+              { text: 'Delete', },
+              
         
-        tasks: [
-          {
-            name: "task one",
-            status: "to-do",
-          },
-          {
-            name: "task two",
+            ],
+          task: "",
+          editedTask: null,
+          statuses: ["to-do", "in-progress", "finished"],
+          
+          tasks: [
+            {
+              name: "task one",
+              status: "to-do",
+            },
+            {
+              name: "task two",
             status: "in-progress",
           },
           {
@@ -89,20 +92,25 @@ import { Button } from 'ant-design-vue';
           },
         ],
     };
+    
   },
+  computed() {
+            
 
+        },
+  
   methods: {
     capitalizeFirstChar(str){
       return str.charAt(0).toUpperCase() +str.slice(1);
     },
-
-
+    
+    
     changeStatus(index) {
       let newIndex = this.statuses.indexOf(this.tasks[index].status);
       if(++newIndex > 2) newIndex = 0;
       this.tasks[index].status = this.statuses[newIndex];
     },
-
+    
     //delete task
     deleteTask(index){
       this.tasks.splice(index, 1);
@@ -116,7 +124,7 @@ import { Button } from 'ant-design-vue';
     
     submitTask(){
       if(this.task.length === 0)return;
-
+      
       if(this.editedTask != null){
         this.tasks[this.editedTask].name = this.task;
         this.editedTask = null;
@@ -128,7 +136,7 @@ import { Button } from 'ant-design-vue';
       }
 
       this.task = "";
-
+      
     },
   }, 
 };
